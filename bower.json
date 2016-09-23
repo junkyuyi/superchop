@@ -1,0 +1,24 @@
+{
+  "name": "superchop",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Jun Kyu Yi <junkyuyi@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "angular-cookies": "^1.5.8",
+    "angular-password": "^1.0.3",
+    "bootstrap": "^3.3.7"
+  }
+}
