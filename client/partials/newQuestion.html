@@ -1,0 +1,34 @@
+<div class="row">
+	<a class="col-xs-1" href="#/">Home</a>
+	<a class="col-xs'1 col-xs-offset-10" ng-click="logout()">Logout</a>
+</div>
+
+
+<div class="row">
+	<h1>New Question</h1>
+</div>
+
+<div class="row">
+	<div class="col-xs-8">
+		<form name="theform">
+			<div class="form-group row">
+				<label class="col-form-label col-xs-2">Question</label>
+				<div class="col-xs-10">
+					<textarea name="quest" class="form-control" type="text" rows="7" ng-model="newQuestion.question" required ng-minlength="10"></textarea>
+					<div ng-if="theform.quest.$touched">
+						<span class="error" ng-if="theform.quest.$error.required">Question field is required</span>
+						<span class="error" ng-if="theform.quest.$error.minlength">Question shoule be at least 10 characters</span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-form-label col-xs-2">Description (optional)</label>
+				<div class="col-xs-10">
+					<textarea class="form-control" type="text" rows="7" ng-model="newQuestion.description"></textarea>
+				</div>
+			</div>
+			<a href="#/"><button class="btn btn-primary">Cancel</button></a>
+			<button class="btn btn-primary" ng-click="addQuestion()" ng-disabled="theform.$invalid">Submit</button>
+		</form>
+	</div>
+</div>

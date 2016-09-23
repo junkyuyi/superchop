@@ -15,25 +15,6 @@ app.use( bp.json() );
 app.use( express.static( path.join( root, 'client' )));
 app.use( express.static( path.join( root, 'bower_components' )));
 
-// API MW
-// app.use( 
-// 	ejwt({
-// 		secret:"mySuperSecret", 
-// 		getToken:function(req) { 
-// 			return req.cookies.jwttoken 
-// 		}
-// 	})
-// 	.unless({
-// 		path: [
-// 			// '/favicon.ico',
-// 			'/',
-// 			'/authenticate',
-// 			'/register'
-// 		]
-// 	})
-// );
-// app.use( unless('/authenticate', checkCookie));
-
 require('./server/config/mongoose.js');
 require('./server/config/routes.js')(app); // set routes to 'app'
 

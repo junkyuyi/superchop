@@ -1,0 +1,36 @@
+<div class="row">
+	<a class="col-xs-1" href="#/">Home</a>
+	<a class="col-xs-3" href="#/question/{{question._id}}">Go back to question</a>
+	<a class="col-xs'1 col-xs-offset-7" ng-click="logout()">Logout</a>
+</div>
+
+
+<div class="row">
+	<h1>{{question.question}}</h1>
+	<p ng-if="question.description">{{question.description}}</p>
+</div>
+
+<div class="row">
+	<div class="col-xs-8">
+		<form name="theform">
+			<div class="form-group row">
+				<label class="col-form-label col-xs-2">Your Answer</label>
+				<div class="col-xs-10">
+					<textarea name="ans" class="form-control" type="text" rows="7" ng-model="newAnswer.answer" required ng-minlength="5"></textarea>
+					<div ng-if="theform.ans.$touched">
+						<span class="error" ng-if="theform.ans.$error.required">Question field is required</span>
+						<span class="error" ng-if="theform.ans.$error.minlength">Question shoule be at least 5 characters</span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-form-label col-xs-2">Supporting details for your answer (optional)</label>
+				<div class="col-xs-10">
+					<textarea class="form-control" type="text" rows="7" ng-model="newAnswer.detail"></textarea>
+				</div>
+			</div>
+			<a class="col-xs-offset-2" href="#/"><button class="btn btn-primary">Cancel</button></a>
+			<button class="btn btn-primary" ng-click="addAnswer()" ng-disabled="theform.$invalid">Submit</button>
+		</form>
+	</div>
+</div>

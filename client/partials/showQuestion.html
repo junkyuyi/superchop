@@ -1,0 +1,34 @@
+<div class="row">
+	<a class="col-xs-1" href="#/">Home</a>
+	<a class="col-xs-3" href="#/question/{{question._id}}/new_answer">Answer this question</a>
+	<a class="col-xs'1 col-xs-offset-7" ng-click="logout()">Logout</a>
+</div>
+
+
+<div class="row">
+	<h1>{{question.question}}</h1>
+	<p ng-if="question.description">{{question.description}}</p>
+</div>
+
+
+<div class="row">
+	<table class="col-xs-10 col-xs-offset-1 table borderless">
+		<tbody>
+			<tr ng-repeat="answer in question._answers | orderBy:'-_likes.length'">
+				<td>
+					<h4>{{answer._user.name}}:</h4>
+					<h5>{{answer.answer}}</h5>
+					<h6>{{answer.detail}}</h6>
+
+				</td>
+				<td>
+					<h4>
+						{{answer._likes.length}} likes 
+						<button ng-if="!alreadyLiked[answer._id]" class="btn" ng-click="addLike(answer._id)">Like!</button>
+						<P ng-if="alreadyLiked[answer._id]">(Already liked)</P>
+					</h4>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -1,31 +1,31 @@
 app.controller('loginController', 
-  ['$scope', 'sessionFactory', 'userFactory', '$location', '$routeParams', '$cookies', 
-  function($scope, sessionFactory, userFactory, $location, $routeParams, $cookies) {
+  ['$scope', 'userFactory', '$location', '$routeParams', '$cookies', 
+  function($scope, userFactory, $location, $routeParams, $cookies) {
   
   /* Private Variables */
-  
+  var index = function() {
+    if ($cookies.getObject("currentUser")) {
+      $location.url('/');
+    }
+  }
   /* Private Methods */
 
   /* Public Variables */
 
   /* Public Methods */
   $scope.login = function() {
-    sessionFactory.login($scope.user, function(user) {
-      $location.url('/dashboard');
-      // $cookies.putObject('user',user);
-    });
-  }
-
-  $scope.register = function() {
-    sessionFactory.register($scope.newUser, function(user) {
-      if( user.errmsg || user.errors ) {
-        console.log( resData.errors, resData.errmsg );
-      } else  {
-        $location.url('/dashboard');
-        // $cookies.putObject('user',user);
-      }
+    userFactory.login($scope.user, function(user) {
+      if (user.name) {
+        // write cookie
+        $cookies.putObject("currentUser", user);
+        $scope.user = {};
+        $location.url('/');
+      } else {
+        $scope.user = {};
+      }    
     });
   }
 
   /* On Load */
+  index();
 }]); 

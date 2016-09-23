@@ -2,21 +2,25 @@ var app = angular.module('app', ['ngRoute', 'ngCookies', 'ngPassword']);
 
 app.config(function($routeProvider) {
   $routeProvider
-    .when('/', {
+    .when('/index', {
       templateUrl: '/partials/login.html',
       controller: 'loginController'
     })
-    .when('/dashboard', {
+    .when('/', {
       templateUrl: '/partials/dashboard.html',
-      controller: 'dashboardController',
+      controller: 'dashboardController'
     })
-    .when('/topic/:id', {
-      templateUrl: '/partials/topic.html',
-      controller: 'topicController',
+    .when('/new_question', {
+      templateUrl: '/partials/newQuestion.html',
+      controller: 'newQuestionController',
     })
-    .when('/user/:id', {
-      templateUrl: '/partials/user.html',
-      controller: 'userController'
+    .when('/question/:id', {
+      templateUrl: '/partials/showQuestion.html',
+      controller: 'showQuestionController',
+    })
+    .when('/question/:id/new_answer', {
+      templateUrl: '/partials/newAnswer.html',
+      controller: 'newAnswerController'
     })
     .otherwise({
       redirectTo: '/'
